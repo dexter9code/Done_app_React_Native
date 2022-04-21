@@ -1,10 +1,11 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import ListingsScreen from "./../screens/ListingsScreen";
 import ListingDetailsScreen from "./../screens/ListingDetailsScreen";
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 const FeedNavigator = () => (
   <Stack.Navigator mode="modal">
@@ -13,7 +14,11 @@ const FeedNavigator = () => (
       component={ListingsScreen}
       options={{ headerShown: false }}
     />
-    <Stack.Screen name="ListingDetails" component={ListingDetailsScreen} />
+    <Stack.Screen
+      name="ListingDetails"
+      component={ListingDetailsScreen}
+      options={{ headerShown: false }}
+    />
   </Stack.Navigator>
 );
 
