@@ -54,20 +54,20 @@ const categories = [
 ];
 
 function ListingEditScreen() {
-  const [location, setLocation] = useState();
+  // const [location, setLocation] = useState();
 
-  const getLocation = async () => {
-    const { granted } = await Location.requestBackgroundPermissionsAsync();
-    if (!granted) return;
-    const {
-      coords: { latitude, longitude },
-    } = await Location.getLastKnownPositionAsync();
-    setLocation({ longitude, latitude });
-  };
+  // const getLocation = async () => {
+  //   const { granted } = await Location.requestBackgroundPermissionsAsync();
+  //   if (!granted) return;
+  //   const {
+  //     coords: { latitude, longitude },
+  //   } = await Location.getLastKnownPositionAsync();
+  //   setLocation({ longitude, latitude });
+  // };
 
-  useEffect(() => {
-    getLocation();
-  }, []);
+  // useEffect(() => {
+  //   getLocation();
+  // }, []);
 
   return (
     <Screen style={styles.container}>
@@ -79,7 +79,7 @@ function ListingEditScreen() {
           category: null,
           images: [],
         }}
-        onSubmit={(values) => console.log(location)}
+        onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />
