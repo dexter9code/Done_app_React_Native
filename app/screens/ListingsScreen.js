@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { Button, FlatList, StyleSheet } from "react-native";
 
 import Screen from "../components/Screen";
 import routes from "../navigation/routes";
 import listingsApi from "../api/listings";
 import colors from "../config/colors";
 import Card from "./../components/Card";
+import AppText from "./../components/AppText";
 
 function ListingsScreen({ navigation }) {
   const [listings, setListings] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     loadListings();
@@ -16,10 +18,22 @@ function ListingsScreen({ navigation }) {
 
   const loadListings = async () => {
     const response = await listingsApi.getListings();
+    if (!response.ok) return setError(true);
+
+    setError(false); //if dont have a error
     setListings(response.data);
   };
   return (
     <Screen style={styles.screen}>
+      {error && (
+        <>
+          <AppText>
+            Sorry Our server are busy or Down rightnow please try again after
+            sometime or Try to Reload the page Bitch.
+          </AppText>
+          <Button title="Reload" onPress={loadListings} />
+        </>
+      )}
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
