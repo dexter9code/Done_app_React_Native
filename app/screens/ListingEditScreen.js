@@ -73,7 +73,7 @@ function ListingEditScreen() {
   //   getLocation();
   // }, []);
 
-  const handleSubmit = async (listing) => {
+  const handleSubmit = async (listing,{resetForm}) => {
     setProgress(0);
     setUploadVisible(true);
     const result = await listingApi.addListing({ ...listing }, (progress) =>
@@ -81,6 +81,8 @@ function ListingEditScreen() {
     );
 
     // if (!result.ok) return alert("could not save at the moment");
+
+    resetForm();
   };
   return (
     <Screen style={styles.container}>
