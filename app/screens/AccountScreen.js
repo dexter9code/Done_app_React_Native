@@ -31,7 +31,7 @@ function AccountScreen({ navigation }) {
         <ListItem
           title="Ranveer Singh"
           subTitle="programmingmadeEasy@gmail.com"
-          image={require("../assets/faceImage.jpg")}
+          image={require("../assets/duraken.jpg")}
         />
       </View>
       <View style={styles.container}>
