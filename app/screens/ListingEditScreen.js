@@ -71,8 +71,10 @@ function ListingEditScreen() {
   // }, []);
 
   const handleSubmit = async (listing) => {
-    const result = await listingApi.addListing(listing);
-    if (!result.ok) return alert("could not save at the moment");
+    const result = await listingApi.addListing({ ...listing }, (progress) =>
+      console.log(progress)
+    );
+    // if (!result.ok) return alert("could not save at the moment");
     alert("Sucess");
   };
   return (
