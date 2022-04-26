@@ -7,7 +7,7 @@ import myTheme from "./app/navigation/navigationTheme";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import AuthContext from "./app/auth/context";
 import authStorage from "./app/auth/storage";
-import  AppLoading  from 'expo-app-loading';
+import AppLoading from "expo-app-loading";
 
 export default function App() {
   const [user, setUser] = useState();
@@ -17,10 +17,6 @@ export default function App() {
     const user = await authStorage.getUser();
     if (user) setUser(user);
   };
-
-  // useState(() => {
-  //   restoreUser();
-  // }, []);
 
   if (!isReady)
     return (
