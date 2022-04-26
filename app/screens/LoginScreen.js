@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 
 import authApi from "../api/auth";
 import AuthContext from "./../auth/context";
+import authStorage from "../auth/storage";
 import Screen from "../components/Screen";
 import {
   AppForm,
@@ -29,6 +30,7 @@ function LoginScreen(props) {
     const user = jwtDecode(result.data);
     console.log(user);
     authContext.setUser(user);
+    authStorage.storeToken(result.data);
   };
   return (
     <Screen style={styles.container}>
