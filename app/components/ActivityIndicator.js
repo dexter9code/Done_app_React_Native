@@ -7,8 +7,8 @@ function ActivityIndicator({ visible = false }) {
   return (
     <View style={styles.overlay}>
       <LottieView
-        autoPlay={true}
-        loop={true}
+        autoPlay
+        loop
         source={require("../assets/animations/9844-loading-40-paperplane.json")}
       />
     </View>
