@@ -7,4 +7,8 @@ export default {
   light: "#f8f4f4",
   dark: "#0c0c0c",
   danger: "#ff5252",
+  lavender: "#E6E6FA",
+  mintCream: "#F5FFFA",
+  lightCyan: "#E0FFFF",
+  grey: "#C9C9C9",
 };
