@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Button, FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 
 import ActivityIndicator from "../components/ActivityIndicator";
+import Button from "../components/AppButton";
 import Screen from "../components/Screen";
 import routes from "../navigation/routes";
 import listingsApi from "../api/listings";
@@ -23,31 +24,30 @@ function ListingsScreen({ navigation }) {
   }, []);
 
   return (
-    <Screen style={styles.screen}>
-      {error && (
-        <>
-          <AppText>
-            Sorry Our server are busy or Down rightnow please try again after
-            sometime or Try to Reload the page Bitch.
-          </AppText>
-          <Button title="Reload" onPress={loadListings} />
-        </>
-      )}
+    <>
       <ActivityIndicator visible={loading} />
-      <FlatList
-        data={listings}
-        keyExtractor={(listing) => listing.id.toString()}
-        renderItem={({ item }) => (
-          <Card
-            title={item.title}
-            subTitle={"$" + item.price}
-            image={item.images[0].url}
-            thumbnailUrl={item.images[0].thumbnailUrl}
-            onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
-          />
+      <Screen style={styles.screen}>
+        {error && (
+          <>
+            <AppText>Bitch just Reload or Wait</AppText>
+            <Button title="Reload" onPress={loadListings} />
+          </>
         )}
-      />
-    </Screen>
+        <FlatList
+          data={listings}
+          keyExtractor={(listing) => listing.id.toString()}
+          renderItem={({ item }) => (
+            <Card
+              title={item.title}
+              subTitle={"$" + item.price}
+              image={item.images[0].url}
+              thumbnailUrl={item.images[0].thumbnailUrl}
+              onPress={() => navigation.navigate(routes.LISTING_DETAILS, item)}
+            />
+          )}
+        />
+      </Screen>
+    </>
   );
 }
 
