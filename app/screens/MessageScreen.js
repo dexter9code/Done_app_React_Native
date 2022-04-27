@@ -56,7 +56,7 @@ function MessagesScreen(props) {
               id: 2,
               title: "John Parker",
               description: "Still Selling ?",
-              image: require("../assets/faceImage.jpg"),
+              image: require("../assets/johnwick.jpg"),
             },
           ]);
         }}
